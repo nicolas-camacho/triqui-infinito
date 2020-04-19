@@ -1,0 +1,23 @@
+{
+  "name": "tricky-infinito",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolas-camacho/triqui-infinito.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolas-camacho/triqui-infinito/issues"
+  },
+  "homepage": "https://github.com/nicolas-camacho/triqui-infinito#readme",
+  "dependencies": {
+    "inquirer": "^7.1.0"
+  }
+}

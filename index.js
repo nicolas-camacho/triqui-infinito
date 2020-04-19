@@ -1,4 +1,13 @@
+const inquirer = require('inquirer')
+
 let tablero = [[0, 0, 0], [0, 0, 0], [0 , 0, 0]];
+
+let mainQuestions = [{
+    type: 'list',
+    choices: ['Size of board', 'Expand'],
+    message: 'Select an option',
+    name: 'option'
+}]
 
 const createColumn = (rows) => {
     let column = []
@@ -21,8 +30,16 @@ const expand = () => {
     tablero.unshift(createColumn(size + 2))
 }
 
-expand()
+const choices = {
+    'Size of board' : () => console.log(tablero.length),
+    'Expand' : () => expand()
+}
 
-console.log(tablero.length)
-console.log(tablero[0].length)
-console.log(tablero[1].length)
+const init = () => {
+    inquirer.prompt(mainQuestions).then(answer => {
+        choices[answer['option']]()
+        init()
+    })
+}
+
+init()
