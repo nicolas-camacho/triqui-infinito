@@ -1,6 +1,11 @@
-const inquirer = require('inquirer')
+const inquirer = require('inquirer');
+const { expand } = require('./boardFunctions');
 
-let tablero = [[0, 0, 0], [0, 0, 0], [0 , 0, 0]];
+let board = [
+    [0, 0, 0], 
+    [0, 0, 0], 
+    [0, 0, 0]
+];
 
 let mainQuestions = [{
     type: 'list',
@@ -9,33 +14,17 @@ let mainQuestions = [{
     name: 'option'
 }]
 
-const createColumn = (rows) => {
-    let column = []
-    for (let index = 0; index < rows; index++) {
-        column.push(0)
-    }
-
-    return column;
-}
-
-const expand = () => {
-    let size = tablero.length;
-
-    for (let index = 0; index < tablero.length; index++) {
-        tablero[index].push(0);
-        tablero[index].unshift(0);
-    }
-
-    tablero.push(createColumn(size + 2))
-    tablero.unshift(createColumn(size + 2))
-}
+let players = [[],[]]
+let turn = null;
 
 const choices = {
-    'Size of board' : () => console.log(tablero.length),
-    'Expand' : () => expand()
+    'Size of board' : () => console.log(board.length),
+    'Expand' : () => expand(board)
 }
 
 const init = () => {
+    turn = playe2[Math.floor(Math.random() * 2)]
+
     inquirer.prompt(mainQuestions).then(answer => {
         choices[answer['option']]()
         init()
